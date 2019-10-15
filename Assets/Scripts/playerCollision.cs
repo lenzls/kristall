@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class playerCollision : MonoBehaviour
 {
+    
+    private Vector3 initialPosition;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        initialPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -19,9 +22,9 @@ public class playerCollision : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // Destroy(other.gameObject);
         if (other.gameObject.CompareTag("monster")) {
-            other.gameObject.SetActive(false);
+            // Destroy(other.gameObject);
+            transform.position = initialPosition;
         }
     }
 }
