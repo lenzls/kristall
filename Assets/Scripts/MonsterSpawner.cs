@@ -9,6 +9,7 @@ public class MonsterSpawner : MonoBehaviour
     public float spawnRange_z1 = 0.0f;
     public float spawnRange_x2 = 0.0f;
     public float spawnRange_z2 = 0.0f;
+    public float spawnY = 0.5f;
 
     public int numberOfMonsters = 10;
 
@@ -23,7 +24,7 @@ public class MonsterSpawner : MonoBehaviour
         for (int i = 0; i < numberOfMonsters; i++) {
             float coordX = Random.Range(spawnRange_x1, spawnRange_x2);
             float coordZ = Random.Range(spawnRange_z1, spawnRange_z2);
-            Instantiate(monsterPrefab, new Vector3(coordX, 10, coordZ), Quaternion.identity, monsterParent.transform);
+            Instantiate(monsterPrefab, new Vector3(coordX, spawnY, coordZ), Quaternion.identity, monsterParent.transform);
         }
     }
 
