@@ -7,6 +7,7 @@ public class playerCollision : MonoBehaviour
 {
     
     private Vector3 initialPosition;
+    public GameObject tryAgainText;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,9 @@ public class playerCollision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("monster")) {
             // Destroy(other.gameObject);
+            tryAgainText.GetComponent<TextFadeability>().Fade();
             transform.position = initialPosition;
         }
     }
+
 }
