@@ -27,6 +27,7 @@ public class playerCollision : MonoBehaviour
             // Destroy(other.gameObject);
             tryAgainText.GetComponent<TextFadeability>().Fade();
             transform.position = initialPosition;
+            GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         }
     }
 
