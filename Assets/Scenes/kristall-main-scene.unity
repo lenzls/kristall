@@ -758,7 +758,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 9997fd2c58e53aa679f796d17147c026,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 858.35803
+      value: 740
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 9997fd2c58e53aa679f796d17147c026,
         type: 3}
@@ -768,7 +768,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 9997fd2c58e53aa679f796d17147c026,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 201
+      value: 215
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 9997fd2c58e53aa679f796d17147c026,
         type: 3}
@@ -813,17 +813,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 9997fd2c58e53aa679f796d17147c026,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 9997fd2c58e53aa679f796d17147c026,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 9997fd2c58e53aa679f796d17147c026,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9997fd2c58e53aa679f796d17147c026, type: 3}
@@ -904,8 +904,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323130104}
-  m_LocalRotation: {x: 0.08858497, y: -0, z: -0, w: 0.99606866}
-  m_LocalPosition: {x: 697.3, y: 219, z: -109.3}
+  m_LocalRotation: {x: -0.021868788, y: 0.050058924, z: -0.0010974756, w: -0.99850625}
+  m_LocalPosition: {x: 700.1561, y: 71.22888, z: 100.74846}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1024,11 +1024,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a23e2a053c9dbd4438de8339f4448f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRange_x1: 0
-  spawnRange_z1: 200
-  spawnRange_x2: 1300
+  spawnRange_x1: 300
+  spawnRange_z1: 220
+  spawnRange_x2: 1000
   spawnRange_z2: 550
-  numberOfMonsters: 100
+  numberOfMonsters: 200
   monsterPrefab: {fileID: 7138961862365925443, guid: 3e8850de1a938bff4bbedc4a3c532a73,
     type: 3}
   monsterParent: {fileID: 562594121}
@@ -1330,7 +1330,7 @@ Terrain:
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 5
+  m_HeightmapPixelError: 1
   m_SplatMapDistance: 1000
   m_HeightmapMaximumLOD: 0
   m_ShadowCastingMode: 2
