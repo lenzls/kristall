@@ -32,7 +32,7 @@ public class playerCollision : MonoBehaviour
             tryAgainText.GetComponent<TextFadeability>().Fade();
 
             transform.position = initialPosition;
-            GetComponent<FirstPersonController>().m_MouseLook.ResetCharacterTargetRot(initialRotation);
+            // GetComponent<FirstPersonController>().m_MouseLook.ResetCharacterTargetRot(initialRotation);
             GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         }
     }

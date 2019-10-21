@@ -286,6 +286,28 @@ MonoBehaviour:
   thirdPersonCamera: {fileID: 250317849}
   aboveCamera: {fileID: 1323130104}
   cameraMode: 0
+--- !u!114 &514768178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514768170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc591bdeae467a71b898dc09b7a62247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MouseLook:
+    XSensitivity: 2
+    YSensitivity: 2
+    clampVerticalRotation: 1
+    MinimumX: -90
+    MaximumX: 90
+    smooth: 0
+    smoothTime: 5
+    lockCursor: 1
+  m_firstPersonCamera: {fileID: 896280947}
 --- !u!1 &562594121
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +671,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0.9907228, y: 1, z: 0.22583002, w: 0.28125}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1944,6 +1966,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hero
       objectReference: {fileID: 0}
+    - target: {fileID: 1725020200704273988, guid: 8f7f9f9a3f2cfb5d6a3a0aa7367f5e30,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1725020200968707958, guid: 8f7f9f9a3f2cfb5d6a3a0aa7367f5e30,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1997,11 +2024,6 @@ PrefabInstance:
     - target: {fileID: 1725020200968707958, guid: 8f7f9f9a3f2cfb5d6a3a0aa7367f5e30,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1725020200704273988, guid: 8f7f9f9a3f2cfb5d6a3a0aa7367f5e30,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
