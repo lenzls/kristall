@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityStandardAssets.Utility;
-using UnityStandardAssets.Characters.FirstPerson;
 
 public class MouseLookTrigger : MonoBehaviour
 {

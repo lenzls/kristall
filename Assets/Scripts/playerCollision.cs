@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
-using UnityStandardAssets.Characters.FirstPerson;
 
 public class playerCollision : MonoBehaviour
 {
@@ -31,8 +30,8 @@ public class playerCollision : MonoBehaviour
 
             tryAgainText.GetComponent<TextFadeability>().Fade();
 
-            transform.position = initialPosition;
-            // GetComponent<FirstPersonController>().m_MouseLook.ResetCharacterTargetRot(initialRotation);
+            GetComponent<Transform>().position = initialPosition;
+            GetComponent<MouseLookTrigger>().m_MouseLook.ResetCharacterTargetRot(initialRotation);
             GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         }
     }

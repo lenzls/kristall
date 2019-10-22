@@ -308,6 +308,19 @@ MonoBehaviour:
     smoothTime: 5
     lockCursor: 1
   m_firstPersonCamera: {fileID: 896280947}
+--- !u!114 &514768179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514768170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1408a19a1592f34b798a28bc647315fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tryAgainText: {fileID: 2127553918}
 --- !u!1 &562594121
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,7 +684,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0.9907228, y: 1, z: 0.22583002, w: 0.28125}
+  m_BoundingSphereOverride: {x: 0, y: 1.377534e-39, z: -1.06e-43, w: 1.911e-42}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
