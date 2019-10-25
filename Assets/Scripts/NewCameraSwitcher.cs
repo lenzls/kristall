@@ -12,8 +12,11 @@ public class NewCameraSwitcher : MonoBehaviour
 
     public int cameraMode = 0;
 
+    private HeroCharacterController characterController;
+
     void Start()
     {
+        characterController = player.GetComponent<HeroCharacterController>();
     }
 
     void Update()
@@ -37,18 +40,21 @@ public class NewCameraSwitcher : MonoBehaviour
         yield return new WaitForSeconds(0.01f);
         if (cameraMode == 0)
         {
+            characterController.m_UseMouseLook = true;
             firstPersonCamera.SetActive (true);
             thirdPersonCamera.SetActive (false);
             aboveCamera.SetActive (false);
         }
         if (cameraMode == 1)
         {
+            characterController.m_UseMouseLook = true;
             firstPersonCamera.SetActive (false);
             thirdPersonCamera.SetActive (true);
             aboveCamera.SetActive (false);
         }
         if (cameraMode == 2)
         {
+            characterController.m_UseMouseLook = false;
             firstPersonCamera.SetActive (false);
             thirdPersonCamera.SetActive (false);
             aboveCamera.SetActive (true);

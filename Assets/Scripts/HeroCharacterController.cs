@@ -32,6 +32,8 @@ public class HeroCharacterController : MonoBehaviour
     [SerializeField] float m_AnimSpeedMultiplier = 1f;
     [SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
 
+    public bool m_UseMouseLook = true;
+
     private Camera m_Camera;
     private bool m_Jump;
     private float m_YRotation;
@@ -153,6 +155,7 @@ public class HeroCharacterController : MonoBehaviour
 
     private void UpdateAnimator(Vector3 movement) {
         Debug.Log("anim");
+        Debug.Log(m_Camera);
         Debug.Log(movement);
         Debug.Log(transform.rotation);
         Debug.Log(transform.TransformDirection(movement));
@@ -301,7 +304,10 @@ public class HeroCharacterController : MonoBehaviour
 
     private void RotateView()
     {
-        m_MouseLook.LookRotation (transform, m_Camera.transform);
+        if (m_UseMouseLook)
+        {
+            m_MouseLook.LookRotation (transform, m_Camera.transform);
+        }
     }
 
 
