@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 // Based on Standard Assets/FirstPersonController
 [RequireComponent(typeof (CharacterController))]
 [RequireComponent(typeof (AudioSource))]
+[RequireComponent(typeof(Animator))]
 public class HeroCharacterController : MonoBehaviour
 {
     [SerializeField] private bool m_IsWalking;
@@ -28,6 +29,9 @@ public class HeroCharacterController : MonoBehaviour
     [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
     [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
+    [SerializeField] float m_AnimSpeedMultiplier = 1f;
+    [SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
+
     private Camera m_Camera;
     private bool m_Jump;
     private float m_YRotation;
@@ -41,6 +45,7 @@ public class HeroCharacterController : MonoBehaviour
     private float m_NextStep;
     private bool m_Jumping;
     private AudioSource m_AudioSource;
+    private Animator m_Animator;
 
     // Use this for initialization
     private void Start()
@@ -55,6 +60,7 @@ public class HeroCharacterController : MonoBehaviour
         m_Jumping = false;
         m_AudioSource = GetComponent<AudioSource>();
         m_MouseLook.Init(transform , m_Camera.transform);
+        m_Animator = GetComponent<Animator>();
     }
 
 
@@ -130,7 +136,8 @@ public class HeroCharacterController : MonoBehaviour
         // Debug.Log(transform.rotation);
         // Debug.Log("before by");
         // Debug.Log(m_MoveDir*Time.fixedDeltaTime);
-        m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
+        Vector3 movement = m_MoveDir*Time.fixedDeltaTime;
+        m_CollisionFlags = m_CharacterController.Move(movement);
         // Debug.Log("after move");
         // Debug.Log(transform.position);
         // Debug.Log(transform.rotation);
@@ -139,8 +146,54 @@ public class HeroCharacterController : MonoBehaviour
         UpdateCameraPosition(speed);
 
         m_MouseLook.UpdateCursorLock();
+
+        // Debug.Log(m_MoveDir);
+        UpdateAnimator(m_MoveDir);
     }
 
+    private void UpdateAnimator(Vector3 movement) {
+        Debug.Log(movement);
+        float turnAmount = Mathf.Atan2(movement.x, movement.z);
+        float m_ForwardAmount = movement.z;
+        m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
+        // m_Animator.SetFloat("Turn", turnAmount, 0.1f, Time.deltaTime);
+        m_Animator.SetBool("OnGround", m_CharacterController.isGrounded);
+        if (!m_CharacterController.isGrounded)
+        {
+            m_Animator.SetFloat("Jump", movement.y);
+            m_Animator.applyRootMotion = false;
+        }
+        else
+        {
+            m_Animator.applyRootMotion = true;
+        }
+
+        // calculate which leg is behind, so as to leave that leg trailing in the jump animation
+        // (This code is reliant on the specific run cycle offset in our animations,
+        // and assumes one leg passes the other at the normalized clip times of 0.0 and 0.5)
+        float k_Half = 0.5f;
+        float runCycle =
+            Mathf.Repeat(
+                m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime + m_RunCycleLegOffset, 1);
+        float jumpLeg = (runCycle < k_Half ? 1 : -1) * m_ForwardAmount;
+        if (m_CharacterController.isGrounded)
+        {
+            m_Animator.SetFloat("JumpLeg", jumpLeg);
+        }
+
+
+        // the anim speed multiplier allows the overall speed of walking/running to be tweaked in the inspector,
+        // which affects the movement speed because of the root motion.
+        if (m_CharacterController.isGrounded && movement.magnitude > 0)
+        {
+            m_Animator.speed = m_AnimSpeedMultiplier;
+        }
+        else
+        {
+            // don't use that while airborne
+            m_Animator.speed = 1;
+        }
+    }
 
     private void PlayJumpSound()
     {
