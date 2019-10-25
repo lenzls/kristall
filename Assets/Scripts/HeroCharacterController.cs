@@ -152,9 +152,13 @@ public class HeroCharacterController : MonoBehaviour
     }
 
     private void UpdateAnimator(Vector3 movement) {
+        Debug.Log("anim");
         Debug.Log(movement);
+        Debug.Log(transform.rotation);
+        Debug.Log(transform.TransformDirection(movement));
+        movement = transform.TransformDirection(movement);
         float turnAmount = Mathf.Atan2(movement.x, movement.z);
-        float m_ForwardAmount = movement.z;
+        float m_ForwardAmount = new Vector3(movement.x, 0, movement.z).magnitude;
         m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
         // m_Animator.SetFloat("Turn", turnAmount, 0.1f, Time.deltaTime);
         m_Animator.SetBool("OnGround", m_CharacterController.isGrounded);
